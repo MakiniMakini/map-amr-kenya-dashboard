@@ -1,5 +1,4 @@
 # Load the libraries
-# install.packages("dygraphs")
 library(shiny)
 library(sf)
 library(DT)
@@ -8,41 +7,12 @@ library(xts)
 library(leaflet)
 library(dplyr)
 
-# Set working directory
+# Set working directory (adjust this path to your actual working directory)
 setwd("~/MAKINI CODES/CEMA/MAP-AMR/Dashboard/appdir/appdir")
 
+# Load data
 data <- read.csv("data/data.csv")
 map <- st_read("data/fe_2007_39_county/fe_2007_39_county.shp")
-
-# UI object
-ui <- fluidPage(
-  titlePanel(p("MAP-AMR KENYA", style = "color:#3474A7")),
-  sidebarLayout(
-    sidebarPanel(
-      p("Made by", a("CEMA",
-                     href = "http://cema-africa.uonbi.ac.ke/"
-      ), "."),
-      img(
-        src = "kenya-logo.jpg",
-        width = "70px", height = "70px"),
-      width = 3),
-    mainPanel(
-      fluidRow(
-        column(12,
-               leafletOutput(outputId = "map")
-        ),
-        fluidRow(
-          column(6,
-                 dygraphOutput(outputId = "timetrend")
-          ),
-          column(6,
-                 DTOutput(outputId = "table")
-          )
-        )
-      )
-    )
-  )
-)
 
 # Server function
 server <- function(input, output) {
@@ -99,5 +69,4 @@ server <- function(input, output) {
   })
 }
 
-# Shiny app
-shinyApp(ui = ui, server = server)
+
