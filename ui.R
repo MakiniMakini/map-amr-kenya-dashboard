@@ -9,23 +9,8 @@ ui <- navbarPage(
   title = "MAP-AMR KENYA",
   id = "nav",
   
-  # Add custom CSS to style the navbar
-  tags$style(HTML("
-    .navbar-nav {
-      background-color: #3474A7 !important;
-    }
-    .navbar-nav > li > a, .navbar-brand {
-      color: white !important;
-    }
-    .navbar-nav > li > a:hover, .navbar-nav > li > a:focus {
-      background-color: #286090 !important;
-      color: white !important;
-    }
-    .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
-      background-color: #286090 !important;
-      color: white !important;
-    }
-  ")),
+  # Link the external CSS file
+  tags$head(tags$link(rel = "stylesheet", type = "text/css", href = "main.css")),
   
   tabPanel(
     "Data",
@@ -81,4 +66,3 @@ ui <- navbarPage(
     )
   )
 )
-

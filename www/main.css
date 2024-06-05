@@ -1,0 +1,14 @@
+.navbar-nav {
+  background-color: #ba3a41 !important;
+}
+.navbar-nav > li > a, .navbar-brand {
+  color: black !important;
+}
+.navbar-nav > li > a:hover, .navbar-nav > li > a:focus {
+  background-color: #ba733a !important;
+  color: black !important;
+}
+.navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
+  background-color: #cc8d5b !important;
+  color: black !important;
+}
