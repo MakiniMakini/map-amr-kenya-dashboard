@@ -3,6 +3,7 @@ library(shiny)
 library(leaflet)
 library(DT)
 library(dygraphs)
+library(plotly)
 
 # UI object
 ui <- navbarPage(
@@ -42,7 +43,8 @@ ui <- navbarPage(
         fluidRow(
           column(12, leafletOutput(outputId = "map")),
           fluidRow(
-            column(6, dygraphOutput(outputId = "timetrend"))
+            column(6, dygraphOutput(outputId = "timetrend")),
+            column(6, plotlyOutput(outputId = "piechart"))
           )
         )
       )
