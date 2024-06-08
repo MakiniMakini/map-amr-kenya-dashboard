@@ -1,9 +1,20 @@
-# Load the libraries
+# Load the libraries required for UI
 library(shiny)
 library(leaflet)
 library(DT)
 library(dygraphs)
 library(plotly)
+
+# Reusable sidebar panel content
+create_sidebar_panel <- function() {
+  sidebarPanel(
+    p("Made by", a("CEMA", href = "http://cema-africa.uonbi.ac.ke/")),
+    img(src = "kenya-logo.jpg", width = "70px", height = "70px"),
+    selectInput("project_year", "Project Year",
+                choices = c("Year 1", "Year 2", "Year 3")),
+    width = 3
+  )
+}
 
 # UI object
 ui <- navbarPage(
@@ -16,13 +27,7 @@ ui <- navbarPage(
   tabPanel(
     "Data",
     sidebarLayout(
-      sidebarPanel(
-        p("Made by", a("CEMA", href = "http://cema-africa.uonbi.ac.ke/")),
-        img(src = "kenya-logo.jpg", width = "70px", height = "70px"),
-        selectInput("project_year", "Project Year",
-                    choices = c("Year 1", "Year 2", "Year 3")),
-        width = 3
-      ),
+      create_sidebar_panel(),
       mainPanel(
         DTOutput(outputId = "table")
       )
@@ -32,13 +37,7 @@ ui <- navbarPage(
   tabPanel(
     "Plots",
     sidebarLayout(
-      sidebarPanel(
-        p("Made by", a("CEMA", href = "http://cema-africa.uonbi.ac.ke/")),
-        img(src = "kenya-logo.jpg", width = "70px", height = "70px"),
-        selectInput("project_year", "Project Year",
-                    choices = c("Year 1", "Year 2", "Year 3")),
-        width = 3
-      ),
+      create_sidebar_panel(),
       mainPanel(
         fluidRow(
           column(12, leafletOutput(outputId = "map")),
