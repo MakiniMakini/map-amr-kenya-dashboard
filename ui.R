@@ -1,69 +1,80 @@
-# Load the libraries required for UI
 library(shiny)
-library(leaflet)
-library(DT)
-library(dygraphs)
-library(plotly)
+library(bs4Dash)
 
-# Reusable sidebar panel content
-create_sidebar_panel <- function() {
-  sidebarPanel(
-    p("Made by", a("CEMA", href = "http://cema-africa.uonbi.ac.ke/")),
-    img(src = "kenya-logo.jpg", width = "70px", height = "70px"),
-    selectInput("project_year", "Project Year",
-                choices = c("Year 1", "Year 2", "Year 3")),
-    width = 3
+bs4DashPage(
+  header = bs4DashNavbar(
+    title = "MAP-AMR KENYA",
+    titleWidth = NULL,
+    disable = FALSE,
+    .list = NULL,
+    leftUi = NULL,
+    rightUi = NULL,
+    skin = "dark",
+    status = "dark",
+    border = TRUE,
+    compact = FALSE,
+    sidebarIcon = shiny::icon("bars"),
+    controlbarIcon = shiny::icon("table-cells"),
+    fixed = FALSE
+  ),
+  sidebar = bs4DashSidebar(
+    sidebarMenu(
+      menuItem("Dashboard", tabName = "dashboard", icon = icon("dashboard")),
+      menuItem("MAP", tabName = "map", icon = icon("dashboard")),
+      menuItem("Settings", tabName = "settings", icon = icon("sliders"),
+               menuSubItem("Subitem 1", tabName = "subitem1"),
+               menuSubItem("Subitem 2", tabName = "subitem2"))
+    )
   )
-}
-
-# UI object
-ui <- navbarPage(
-  title = "MAP-AMR KENYA",
-  id = "nav",
-  
-  # Link the external CSS file
-  tags$head(tags$link(rel = "stylesheet", type = "text/css", href = "main.css")),
-  
-  tabPanel(
-    "Data",
-    sidebarLayout(
-      create_sidebar_panel(),
-      mainPanel(
-        DTOutput(outputId = "table")
-      )
-    )
-  ),
-  
-  tabPanel(
-    "Plots",
-    sidebarLayout(
-      create_sidebar_panel(),
-      mainPanel(
-        fluidRow(
-          column(12, leafletOutput(outputId = "map")),
-          fluidRow(
-            column(6, dygraphOutput(outputId = "timetrend")),
-            column(6, plotlyOutput(outputId = "piechart"))
-          )
-        )
-      )
-    )
-  ),
-  
-  tabPanel(
-    "Login",
-    sidebarLayout(
-      sidebarPanel(
-        p("Made by", a("CEMA", href = "http://cema-africa.uonbi.ac.ke/")),
-        img(src = "kenya-logo.jpg", width = "70px", height = "70px"),
-        textInput("username", "Username"),
-        passwordInput("password", "Password"),
-        actionButton("login", "Login"),
-        width = 3
+  ,
+  body = bs4DashBody(
+    tabItems(
+      tabItem(tabName = "dashboard",
+              DTOutput("table")
       ),
-      mainPanel(
-        p("Please log in to access additional features.")
+      tabItem(tabName = "settings",
+              box(status = "info", title = "Settings Box", solidHeader = TRUE)
+      ),
+      tabItem(tabName = "map",
+              fluidRow(
+                column(width = 12,
+                       bs4Card(
+                         title = "Maximizable Map",
+                         maximizable = TRUE,
+                         leafletOutput("map")
+                       )
+                )
+              ),
+              fluidRow(
+                column(width = 8,
+                       bs4Card(
+                         title = "Pie Chart",
+                         maximizable = TRUE,
+                         plotlyOutput("piechart")
+                       )
+                )
+              )
       )
+      
     )
+  ),
+  controlbar = bs4DashControlbar(
+    skin = "orange",
+    status = "primary",
+    background = "orange",
+    title = "MAP-AMR",
+    sliderInput("obs", "Number of observations:", 1, 100, 50),
+    overlay = FALSE,
+    collapsed = FALSE,
+    pinned = TRUE,
+    controlbarMenu(
+      menuItem("Item 1", tabName = "item1", icon = icon("gear")),
+      menuItem("Item 2", tabName = "item2", icon = icon("bell"))
+    )
+  )
+  ,
+  footer = bs4DashFooter(
+    left = "MAP-AMR KENYA",
+    right = Sys.Date()
   )
 )

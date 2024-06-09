@@ -1,9 +1,10 @@
-# Load shiny library
+# Load the libraries required for UI and server
 library(shiny)
+library(bs4Dash)
 
-# Source the UI and server code
+# Source the ui and server
 source("ui.R")
 source("server.R")
 
-# Run the application 
+# Run the app
 shinyApp(ui = ui, server = server)
