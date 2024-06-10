@@ -63,7 +63,7 @@ server <- function(input, output, session) {
     map <- left_join(map, datafiltered, by = c("Name" = "County"))
     
     # Create leaflet
-    pal <- colorBin("YlOrRd", domain = map$Percentage, bins = 7)
+    pal <- colorBin("YlOrRd", domain = map$Percentage, bins = 3)
     
     labels <- sprintf("%s: %g", map$Name, map$Percentage) %>%
       lapply(htmltools::HTML)
@@ -75,12 +75,12 @@ server <- function(input, output, session) {
         color = "white",
         dashArray = "3",
         fillOpacity = 0.7,
-        label = labels
-      ) %>%
-      leaflet::addLegend(
-        pal = pal, values = ~Percentage,
-        opacity = 0.7, title = NULL
-      )
+        label = labels)
+      #  %>%
+      # leaflet::addLegend(
+      #   pal = pal, values = ~Percentage,
+      #   opacity = 0.7, title = NULL
+      # )
     l
   })
   
@@ -102,6 +102,27 @@ server <- function(input, output, session) {
       insidetextorientation = 'radial'
     ) %>% 
       layout(title = "Distribution of organisms isolated")
+  })
+  
+  # Create a bar graph
+  output$bargraph <- renderPlotly({
+    # Create table for organism counts
+    organism_counts <- KNH_data %>% 
+      group_by(organism_isolated) %>% 
+      summarise(count = n()) %>% 
+      arrange(desc(count))
+    
+    # Create a bar graph
+    plot_ly(
+      data = organism_counts,
+      x = ~organism_isolated,
+      y = ~count,
+      type = 'bar',
+      textinfo = 'label+value'
+    ) %>% 
+      layout(title = "Distribution of organisms isolated",
+             xaxis = list(title = "Organism Isolated"),
+             yaxis = list(title = "Count"))
   })
   
   # Observe changes to the project_year input and navigate to the appropriate tab
