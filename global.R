@@ -11,7 +11,8 @@ library(leaflet)
 library(dplyr)
 library(readxl)
 library(plotly)
-library("tidyr")
+library(tidyr)
+library(RColorBrewer)
 
 # Set working directory
 setwd("~/WORK/CEMA/MAP-AMR/Dashboard/appdir")
@@ -28,5 +29,6 @@ data_list <- lapply(sheet_names, function(sheet) read_excel(excel_file, sheet = 
 names(data_list) <- sheet_names
 summary_data <- data_list[["Totals"]]
 KNH_summary <- data_list[["KNH-summary"]]
+TNH_summary <- data_list[["TNH-summary"]]
 KNH_candida <- data_list[["KNH-candida"]]
-KNH_data <- data_list[["KNH"]] %>% rename("organism_isolated" = "Organism isolated")
+TNH_candida <- data_list[["TNH-candida"]]

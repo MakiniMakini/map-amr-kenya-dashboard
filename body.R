@@ -9,7 +9,7 @@ body <- bs4DashBody(
             box(
               title = "MAP-AMR Kenya",
               solidHeader = TRUE,
-              status = "primary",
+              status = "olive",
               collapsible = TRUE,
               width = 12,
               fluidRow(
@@ -43,9 +43,9 @@ body <- bs4DashBody(
             ),
             # box 2 KNH
             box(
-              title = "Active Surveillance Per site",
+              title = "KNH Active Surveillance",
               solidHeader = TRUE,
-              status = "primary",
+              status = "gray",
               collapsible = TRUE,
               width = 12,
               fluidRow(
@@ -57,7 +57,7 @@ body <- bs4DashBody(
                       bs4Card(
                         title = "KNH Summary",
                         maximizable = TRUE,
-                        plotlyOutput("bargraph"),
+                        plotlyOutput("bargraph_knh"),
                         width = 12
                       )
                     ),
@@ -76,11 +76,11 @@ body <- bs4DashBody(
                 )
               )
             ),
-            # box 3
+            # box 3 TNH
             box(
-              title = "Active Surveillance Per site",
+              title = "TNH Active Surveillance",
               solidHeader = TRUE,
-              status = "primary",
+              status = "teal",
               collapsible = TRUE,
               width = 12,
               fluidRow(
@@ -88,20 +88,22 @@ body <- bs4DashBody(
                   width = 12,
                   fluidRow(
                     column(
-                      width = 8,
+                      width = 4,
                       bs4Card(
-                        title = "MAP-AMR Kenya Sites",
+                        status = "gray-dark",
+                        title = "Candida Isolates at TNH",
                         maximizable = TRUE,
-                        DTOutput("table"),
+                        plotlyOutput("piechart_tnh_candida"),
                         width = 12
                       )
                     ),
                     column(
-                      width = 4,
+                      width = 8,
                       bs4Card(
-                        title = "Summary of Candida",
+                        status = "fuchsia",
+                        title = "TNH Summary",
                         maximizable = TRUE,
-                        plotlyOutput(""),
+                        plotlyOutput("bargraph_tnh"),
                         width = 12
                       )
                     )
