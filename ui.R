@@ -1,5 +1,5 @@
 library(shiny)
-library(bs4Dash)
+library(bs4Dash) 
 
 bs4DashPage(
   header = bs4DashNavbar(
@@ -75,8 +75,8 @@ bs4DashPage(
           icon = icon("circle")
         ),
         bs4SidebarMenuSubItem(
-          text = "Item 6",
-          tabName = "tab6",
+          text = "IPC",
+          tabName = "ipc-year1",
           icon = icon("circle")
         )
       ),
@@ -163,6 +163,10 @@ bs4DashPage(
   tabItem(
     tabItem(tabName = "dashboard",
             DTOutput("table"))
+    ),
+  tabItem(
+    tabItem(tabName = "ipc-year1",
+            uiOutput("pdfviewer"))
     )
   )
   
