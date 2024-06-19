@@ -1,4 +1,3 @@
-
 # ui.R
 
 # Load libraries if necessary (already loaded in global.R)

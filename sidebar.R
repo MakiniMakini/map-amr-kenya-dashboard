@@ -1,4 +1,6 @@
-  #sidebar configuration
+# sidebar.R
+
+ #sidebar configuration
   sidebar = bs4DashSidebar(
     skin = "dark",
     inputId = "sidebarState",
@@ -6,14 +8,14 @@
       id = "sidebar",
       bs4SidebarMenuItem(
         text = "Home",
-        tabName = "home",
-        icon = icon("house")
+        tabName = "map",
+        icon = icon("house"),
+        selected = TRUE
       ),
       bs4SidebarMenuItem(
         text = "Project years",
         tabName = "tab2",
-        icon = icon("shuttle-space"),
-        selected = TRUE
+        icon = icon("shuttle-space")
       ),
       bs4SidebarMenuItem(
         text = "Year 3",
