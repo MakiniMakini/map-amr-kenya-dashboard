@@ -53,6 +53,10 @@ server <- function(input, output, session) {
       updateNavbarPage(session, "nav", selected = "Plots")
     }
   })
+  #today tab added
+  observeEvent(input$today_tab_link, {
+    updateTabItems(session, "sidebar", "today")
+  })
   
   # Function to create pie chart or bar graph
   create_chart <- function(type) {
@@ -224,6 +228,9 @@ server <- function(input, output, session) {
     create_chart("bar_tnh")
   })
   
-
+# TODAY DATA
+  output$new_cases_KNH <- renderText({
+    today_data$Total[today_data$Site == "KNH"]
+  })
   
 }

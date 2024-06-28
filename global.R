@@ -13,6 +13,7 @@ library(readxl)
 library(plotly)
 library(tidyr)
 library(RColorBrewer)
+library(shinyjs)
 
 # Set working directory
 setwd("~/WORK/CEMA/MAP-AMR/Dashboard/appdir")
@@ -27,6 +28,7 @@ excel_file <- "data/candidemia-data.xlsx"
 sheet_names <- excel_sheets(excel_file)
 data_list <- lapply(sheet_names, function(sheet) read_excel(excel_file, sheet = sheet))
 names(data_list) <- sheet_names
+today_data <- data_list[["Today"]]
 summary_data <- data_list[["Totals"]]
 KNH_summary <- data_list[["KNH-summary"]]
 TNH_summary <- data_list[["TNH-summary"]]

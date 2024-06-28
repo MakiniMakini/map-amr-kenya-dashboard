@@ -8,7 +8,7 @@ controlbar = bs4DashControlbar(
   sliderInput("obs", "Number of observations:", 1, 100, 50),
   overlay = FALSE,
   collapsed = FALSE,
-  pinned = TRUE,
+  pinned = FALSE,
   controlbarMenu(
     menuItem("Item 1", tabName = "item1", icon = icon("gear")),
     menuItem("Item 2", tabName = "item2", icon = icon("bell"))

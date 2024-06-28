@@ -13,9 +13,9 @@
         selected = TRUE
       ),
       bs4SidebarMenuItem(
-        text = "Project years",
-        tabName = "tab2",
-        icon = icon("shuttle-space")
+        text = "Today",
+        tabName = "today",
+        icon = icon("calendar-day")
       ),
       bs4SidebarMenuItem(
         text = "Year 3",
@@ -64,7 +64,7 @@
       ),
       bs4SidebarMenuItem(
         text = "The team",
-        tabName = "tab7",
+        tabName = "",
         icon = icon("van-shuttle")
       )
     )
