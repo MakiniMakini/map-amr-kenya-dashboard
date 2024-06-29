@@ -10,33 +10,55 @@ tab_today <- tabItem(
         status = "teal",
         collapsible = TRUE,
         width = 12,  # Full width of the column
-        fluidRow(
-          bs4ValueBox(
-            value = textOutput("new_cases_KNH"),
-            subtitle = "KNH",
-            color = "gray",
-            icon = icon("users")
+        tabsetPanel(
+          id = "knh-tabset",
+          tabPanel(
+            title = "Main ICU",
+            fluidRow(
+              bs4ValueBox(
+                value = textOutput("new_cases_KNH"),
+                subtitle = "KNH",
+                color = "gray",
+                icon = icon("users")
+              )
+            )
           ),
-          bs4ValueBox(
-            value = "123",
-            subtitle = "Makini",
-            color = "gray",
-            icon = icon("users")
+          tabPanel(
+            title = "",
+            fluidRow(
+              bs4ValueBox(
+                value = "123",
+                subtitle = "Makini",
+                color = "gray",
+                icon = icon("users")
+              )
+            )
           ),
-          bs4ValueBox(
-            value = "123",
-            subtitle = "Makini",
-            color = "warning",
-            icon = icon("users")
+          tabPanel(
+            title = "Tab 3",
+            fluidRow(
+              bs4ValueBox(
+                value = "123",
+                subtitle = "Makini",
+                color = "warning",
+                icon = icon("users")
+              )
+            )
           ),
-          bs4ValueBox(
-            value = "123",
-            subtitle = "Makini",
-            color = "danger",
-            icon = icon("users")
+          tabPanel(
+            title = "Tab 4",
+            fluidRow(
+              bs4ValueBox(
+                value = "123",
+                subtitle = "Makini",
+                color = "danger",
+                icon = icon("users")
+              )
+            )
           )
         )
       )
+      
     ),
     #TNH
     column(

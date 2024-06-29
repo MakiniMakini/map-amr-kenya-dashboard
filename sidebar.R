@@ -22,8 +22,13 @@
         icon = icon("bars"),
         startExpanded = TRUE,
         bs4SidebarMenuSubItem(
-          text = "Item 3",
-          tabName = "tab3",
+          text = "Monthly Active surveillance",
+          tabName = "monthly_active_surveillance",
+          icon = icon("circle")
+        ),
+        bs4SidebarMenuSubItem(
+          text = "Candidemia Results",
+          tabName = "tab4",
           icon = icon("circle")
         ),
         bs4SidebarMenuSubItem(

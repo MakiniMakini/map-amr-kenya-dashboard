@@ -30,7 +30,18 @@ data_list <- lapply(sheet_names, function(sheet) read_excel(excel_file, sheet = 
 names(data_list) <- sheet_names
 today_data <- data_list[["Today"]]
 summary_data <- data_list[["Totals"]]
+# monthly summaries
 KNH_summary <- data_list[["KNH-summary"]]
 TNH_summary <- data_list[["TNH-summary"]]
+MP_SHAH_summary <- data_list[["MP-SHAH-summary"]]
+Machakos_summary <- data_list[["Machakos-summary"]]
+JOOTRH_summary <- data_list[["JOOTRH-summary"]]
+CGTRH_summary <- data_list[["CGTRH-summary"]]
+# candida results
 KNH_candida <- data_list[["KNH-candida"]]
 TNH_candida <- data_list[["TNH-candida"]]
+MP_SHAH_candida <- data_list[["MP-SHAH-candida"]]
+Machakos_candida <- data_list[["Machakos-candida"]]
+JOOTRH_candida <- data_list[["JOOTRH-candida"]]
+CGTRH_candida <- data_list[["CGTRH-candida"]]
+# cvc tip data
