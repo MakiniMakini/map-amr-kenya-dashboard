@@ -14,6 +14,8 @@ library(plotly)
 library(tidyr)
 library(RColorBrewer)
 library(shinyjs)
+library(tidyverse)
+library(ggplot2)
 
 # Set working directory
 setwd("~/WORK/CEMA/MAP-AMR/Dashboard/appdir")
@@ -44,4 +46,16 @@ MP_SHAH_candida <- data_list[["MP-SHAH-candida"]]
 Machakos_candida <- data_list[["Machakos-candida"]]
 JOOTRH_candida <- data_list[["JOOTRH-candida"]]
 CGTRH_candida <- data_list[["CGTRH-candida"]]
-# cvc tip data
+# sensitivity data
+# read KNH data 
+KNH_sensitivity_data <- data_list[["KNH"]] %>% 
+  rename("organism_isolated" = "Organism isolated", "patient_outcome" = "Patient outcome",
+         "sensitive" = "AFST-Sensitive", "resistant" = "AFST-Resistant", "intermediate" = "AFST-Intermediate")
+# read TNH data 
+TNH_sensitivity_data <- data_list[["TNH"]] %>% 
+  rename("organism_isolated" = "Organism isolated", "patient_outcome" = "Patient Outcome",
+         "sensitive" = "AFST-Sensitive", "resistant" = "AFST-Resistant", "intermediate" = "AFST-Intermediate")
+# read MPShah data 
+MPSHAH_sensitivity_data <- data_list[["MPShah"]] %>% 
+  rename("organism_isolated" = "Organism isolated", "patient_outcome" = "Patient outcome",
+         "sensitive" = "AFST -Sensitive", "resistant" = "AFST-Resistant", "intermediate" = "AFST-Intermediate")

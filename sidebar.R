@@ -27,13 +27,8 @@
           icon = icon("circle")
         ),
         bs4SidebarMenuSubItem(
-          text = "Candidemia Results",
-          tabName = "tab4",
-          icon = icon("circle")
-        ),
-        bs4SidebarMenuSubItem(
-          text = "Item 4",
-          tabName = "tab4",
+          text = "AFST Results",
+          tabName = "tab_sensitivity",
           icon = icon("circle")
         )
       ),
