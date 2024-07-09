@@ -8,7 +8,7 @@ hospital_summary$Latitude <- as.numeric(hospital_summary$Latitude)
 # Render Leaflet map
 output$map <- renderLeaflet({
   # Define color palette for number of Candida isolated
-  pal <- colorBin("YlOrRd", domain = hospital_summary$Candida_isolated, bins = 3)
+  pal <- colorBin("YlOrBr", domain = hospital_summary$Candida_isolated, bins = 3)
   
   # Define labels for hospitals showing screened patients and Candida isolated
   labels <- lapply(1:nrow(hospital_summary), function(i) {
@@ -22,15 +22,15 @@ output$map <- renderLeaflet({
   leaflet() %>%
     addTiles() %>%
     addPolygons(data = map,
-                fillColor = ~pal(hospital_summary$Candida_isolated),
-                color = "white",
-                dashArray = "3",
-                fillOpacity = 0.7,
+                #fillColor = ~pal(hospital_summary$Candida_isolated),
+                color = "orange",
+                dashArray = "1",
+                fillOpacity = 0.3,
                 highlightOptions = highlightOptions(
-                  weight = 5,
+                  weight = 2,
                   color = "#666",
                   dashArray = "",
-                  fillOpacity = 0.7,
+                  fillOpacity = 0.8,
                   bringToFront = TRUE
                 )) %>%
     addMarkers(data = hospital_summary,

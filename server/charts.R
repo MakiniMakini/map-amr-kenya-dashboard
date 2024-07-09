@@ -1,22 +1,58 @@
 # Function to create charts
 create_chart <- function(type) {
-  if (type == "pie") {
+ if (type == "piechart_summary_hospital") {
     # Compute counts per site
-    site_counts <- summary_data %>%
-      group_by(Site) %>%
-      summarise(count = sum(Numbers)) %>%
+    site_counts <- hospital_summary %>%
+      group_by(Hospital) %>%
+      summarise(count = sum(Screened_patients)) %>%
       arrange(desc(count))
     
     plot_ly(
       data = site_counts,
-      labels = ~Site,
+      labels = ~Hospital,
       values = ~count,
       type = 'pie',
       textinfo = 'label+percent',
       insidetextorientation = 'radial'
     ) %>% 
-      layout(showlegend = FALSE)
-  } else if (type == "bar_knh") {
+      layout(
+        showlegend = FALSE,
+        height = 300,  # Adjust height as needed
+        width = 300    # Adjust width as needed
+      ) %>%
+      config(displayModeBar = FALSE)
+  }
+  
+  else if (type == "bargraph_summary_candida") {
+    # Select columns and store in new data frame
+    new_summary_data <- hospital_summary[, c("Hospital", "Screened_patients", "Candida_isolated")]
+    
+    # Convert data to long format
+    data_long <- reshape2::melt(new_summary_data, id.vars = "Hospital")
+    
+    # Plot using plot_ly
+    plot_ly(
+      data_long,
+      x = ~Hospital,
+      y = ~value,
+      color = ~variable,
+      type = 'bar',
+      text = ~paste(Hospital, "<br>", variable, ": ", value),
+      hoverinfo = "text",
+      marker = list(line = list(color = 'rgb(8,48,107)', width = 1.5))
+    ) %>%
+      layout(
+        title = "",
+        xaxis = list(title = "Hospital"),
+        yaxis = list(title = "Count"),
+        barmode = 'group',
+        legend = list(font = list(size = 10))
+      ) %>%
+      config(displayModeBar = FALSE)
+  }
+  
+  
+  else if (type == "bar_knh") {
     # Define the correct order for the months
     month_levels <- c("Oct to Dec", "Jan", "Feb", "Mar", "April", "May")
     data_long <- pivot_longer(KNH_summary, !Outcome, names_to = "Month", values_to = "Count")
@@ -40,7 +76,9 @@ create_chart <- function(type) {
         barmode = 'group',
         legend = list(font = list(size = 10))
       )
-  } else if (type == "pie_knh_candida") {
+  } 
+  
+  else if (type == "pie_knh_candida") {
     # Compute counts per species
     candida_counts <- KNH_candida %>%
       group_by(Species) %>%
@@ -231,12 +269,13 @@ create_chart <- function(type) {
 }
 
 # Render charts
-output$piechart <- renderPlotly({ create_chart("pie") })
+output$piechart_summary_hospital <- renderPlotly({ create_chart("piechart_summary_hospital") })
 output$piechart_knh_candida <- renderPlotly({ create_chart("pie_knh_candida") })
 output$piechart_tnh_candida <- renderPlotly({ create_chart("pie_tnh_candida") })
 output$piechart_mp_shah_candida <- renderPlotly({ create_chart("piechart_mp_shah_candida") })
 # render bar graphs
 output$bargraph_knh <- renderPlotly({ create_chart("bar_knh") })
+output$bargraph_summary_candida <- renderPlotly({ create_chart("bargraph_summary_candida") })
 output$bargraph_tnh <- renderPlotly({ create_chart("bar_tnh") })
 output$bargraph_mp_shah <- renderPlotly({ create_chart("bar_mp_shah") })
 output$bargraph_machakos <- renderPlotly({ create_chart("bar_machakos") })

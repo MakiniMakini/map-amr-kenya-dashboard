@@ -17,6 +17,7 @@ library(shinyjs)
 library(tidyverse)
 library(ggplot2)
 library(rsconnect)
+library(reshape2)
 # Set working directory
 #setwd("~/WORK/CEMA/MAP-AMR/Dashboard/appdir")
 
