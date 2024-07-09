@@ -11,4 +11,5 @@ server <- function(input, output, session) {
   source("server/charts.R", local = TRUE)
   source("server/today.R", local = TRUE)
   source("server/sensitivity_server/sensitivity_server.R", local = TRUE)
+  source("server/download_documents.R", local = TRUE)
 }

@@ -101,7 +101,7 @@ tab_sensitivity <- tabItem(tabName = "tab_sensitivity",
                              width = 8,
                              bs4Card(
                                tabsetPanel(
-                                 id = "organism_tabs_tnh",
+                                 id = "organism_tabs_mpshah",
                                  type = "pills",
                                  tabPanel("Candida parapsilosis", value = "parapsilosis"),
                                  tabPanel("Candida albicans", value = "albicans"),

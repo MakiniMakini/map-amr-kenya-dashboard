@@ -16,9 +16,9 @@ library(RColorBrewer)
 library(shinyjs)
 library(tidyverse)
 library(ggplot2)
-
+library(rsconnect)
 # Set working directory
-setwd("~/WORK/CEMA/MAP-AMR/Dashboard/appdir")
+#setwd("~/WORK/CEMA/MAP-AMR/Dashboard/appdir")
 
 # Load data
 data <- read.csv("data/ANC_county.csv")
@@ -32,6 +32,8 @@ data_list <- lapply(sheet_names, function(sheet) read_excel(excel_file, sheet = 
 names(data_list) <- sheet_names
 today_data <- data_list[["Today"]]
 summary_data <- data_list[["Totals"]]
+#map summary data
+hospital_summary <- data_list[["Totals"]]
 # monthly summaries
 KNH_summary <- data_list[["KNH-summary"]]
 TNH_summary <- data_list[["TNH-summary"]]

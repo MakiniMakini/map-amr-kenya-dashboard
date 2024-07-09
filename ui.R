@@ -42,8 +42,8 @@ ui <- bs4DashPage(
   
   # Footer section
   footer = bs4DashFooter(
-    left = "MAP-AMR KENYA",
-    right = Sys.Date()
+    left = "© MAP-AMR KENYA",
+    right = paste(Sys.Date(), ":: V-1.0.0")
   )
 )
 

@@ -6,6 +6,7 @@ source("tabs/ipc_year1.R")
 source("tabs/today.R")
 source("tabs/monthly_active_surveillance.R")
 source("tabs/sensitivity_tab.R")
+source("tabs/analyzed_data.R")
 
 # Define the body UI for bs4Dash
 body <- bs4DashBody(
@@ -17,6 +18,7 @@ body <- bs4DashBody(
     tab_dashboard,
     tab_ipc_year1,
     tab_today,
-    tab_sensitivity
+    tab_sensitivity,
+    tab_analyzed_data
   )
 )

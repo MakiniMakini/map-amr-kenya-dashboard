@@ -123,7 +123,7 @@ tab_monthly_active_surveillance <- tabItem(tabName = "monthly_active_surveillanc
                                  width = 4,
                                  bs4Card(
                                    status = "gray-dark",
-                                   title = "Candida Isolates at MP-SHAH",
+                                   title = "Candida Isolates at Machakos",
                                    maximizable = TRUE,
                                    plotlyOutput("piechart_mp_shah_candida"),
                                    width = 12
@@ -153,7 +153,7 @@ tab_monthly_active_surveillance <- tabItem(tabName = "monthly_active_surveillanc
                                  width = 4,
                                  bs4Card(
                                    status = "gray-dark",
-                                   title = "Candida Isolates at MP-SHAH",
+                                   title = "Candida Isolates at JOOTRH",
                                    maximizable = TRUE,
                                    plotlyOutput("piechart_mp_shah_candida"),
                                    width = 12
@@ -183,7 +183,7 @@ tab_monthly_active_surveillance <- tabItem(tabName = "monthly_active_surveillanc
                                  width = 4,
                                  bs4Card(
                                    status = "gray-dark",
-                                   title = "Candida Isolates at MP-SHAH",
+                                   title = "Candida Isolates at CGTRH",
                                    maximizable = TRUE,
                                    plotlyOutput("piechart_mp_shah_candida"),
                                    width = 12

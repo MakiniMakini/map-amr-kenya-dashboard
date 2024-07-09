@@ -18,9 +18,11 @@ output$knh_sensitivity_plot <- renderPlotly({
   
   ggplot(sensitivity_KNH_data_long %>% filter(organism_isolated == organism), aes(y = Drugs, x = Count, fill = Resistance)) +
     geom_bar(stat = "identity") +
-    labs(title = paste(organism, "AFST Results"), x = "Count", y = "Drugs") +
+    labs(title = paste(organism, "AFST Results"), x = "Number of organisms", y = "") +
     theme_minimal() +
-    theme(axis.text.y = element_text(angle = 0, hjust = 1))
+    theme(axis.text.y = element_text(angle = 0, hjust = 1)) +
+    scale_x_continuous(breaks = scales::pretty_breaks(n = 0.5))  +
+    scale_fill_manual(values = c("sensitive" = "#2c3e50", "intermediate" = "#FDDBC7", "resistant" = "#B2182B"))
 })
 
 # outcome data visuals
@@ -33,8 +35,8 @@ output$knh_outcome_plot <- renderPlotly({
     geom_bar(position = "stack", aes(text = ..count..)) +
     coord_flip() +
     labs(
-         x = "Organism Isolated",
-         y = "Count") +
+         x = "",
+         y = "Number of patients") +
     theme_minimal() +
     theme(axis.text.y = element_text(angle = 0, hjust = 1))
   
@@ -64,9 +66,11 @@ output$tnh_sensitivity_plot <- renderPlotly({
   
   ggplot(sensitivity_TNH_data_long %>% filter(organism_isolated == organism), aes(y = Drugs, x = Count, fill = Resistance)) +
     geom_bar(stat = "identity") +
-    labs(title = paste(organism, "AFST Results"), x = "Count", y = "Drugs") +
+    labs(title = paste(organism, "AFST Results"), x = "Number of organisms", y = "") +
     theme_minimal() +
-    theme(axis.text.y = element_text(angle = 0, hjust = 1))
+    theme(axis.text.y = element_text(angle = 0, hjust = 1)) +
+    scale_x_continuous(breaks = scales::pretty_breaks(n = 0.5)) +
+    scale_fill_manual(values = c("sensitive" = "#2c3e50", "intermediate" = "#FDDBC7", "resistant" = "#B2182B"))
 })
 
 # outcome data visuals
@@ -79,8 +83,8 @@ output$tnh_outcome_plot <- renderPlotly({
     geom_bar(position = "stack", aes(text = ..count..)) +
     coord_flip() +
     labs(
-         x = "Organism Isolated",
-         y = "Count") +
+      x = "",
+      y = "Number of patients") +
     theme_minimal() +
     theme(axis.text.y = element_text(angle = 0, hjust = 1))
   
@@ -101,7 +105,7 @@ sensitivity_MPSHAH_data_long <- MPSHAH_sensitivity_data %>%
 
 # Render plot based on selected organism
 output$mpshah_sensitivity_plot <- renderPlotly({
-  organism <- switch(input$organism_tabs_tnh,
+  organism <- switch(input$organism_tabs_mpshah,
                      parapsilosis = "Candida parapsilosis",
                      albicans = "Candida albicans",
                      tropicalis = "Candida tropicalis",
@@ -109,12 +113,14 @@ output$mpshah_sensitivity_plot <- renderPlotly({
   
   ggplot(sensitivity_MPSHAH_data_long %>% filter(organism_isolated == organism), aes(y = Drugs, x = Count, fill = Resistance)) +
     geom_bar(stat = "identity") +
-    labs(title = paste(organism, "AFST Results"), x = "Count", y = "Drugs") +
+    labs(title = paste(organism, "AFST Results"), x = "Number of organisms", y = "") +
     theme_minimal() +
-    theme(axis.text.y = element_text(angle = 0, hjust = 1))
+    theme(axis.text.y = element_text(angle = 0, hjust = 1)) +
+    scale_x_continuous(breaks = scales::pretty_breaks(n = 0.5)) +
+    scale_fill_manual(values = c("sensitive" = "#2c3e50", "intermediate" = "#FDDBC7", "resistant" = "#B2182B"))
 })
 
-# outcome data visuals
+# Outcome data visuals
 # Convert to factors to maintain order
 MPSHAH_sensitivity_data$organism_isolated <- factor(MPSHAH_sensitivity_data$organism_isolated)
 MPSHAH_sensitivity_data$patient_outcome <- factor(MPSHAH_sensitivity_data$patient_outcome)
@@ -124,8 +130,8 @@ output$mpshah_outcome_plot <- renderPlotly({
     geom_bar(position = "stack", aes(text = ..count..)) +
     coord_flip() +
     labs(
-         x = "Organism Isolated",
-         y = "Count") +
+      x = "",
+      y = "Number of patients") +
     theme_minimal() +
     theme(axis.text.y = element_text(angle = 0, hjust = 1))
   

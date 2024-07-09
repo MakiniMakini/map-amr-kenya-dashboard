@@ -13,9 +13,9 @@
         selected = TRUE
       ),
       bs4SidebarMenuItem(
-        text = "Today",
-        tabName = "today",
-        icon = icon("calendar-day")
+        text = "",
+        tabName = "today"
+        #icon = icon("calendar-day")
       ),
       bs4SidebarMenuItem(
         text = "Year 3",
@@ -30,6 +30,11 @@
           text = "AFST Results",
           tabName = "tab_sensitivity",
           icon = icon("circle")
+        ),
+        bs4SidebarMenuSubItem(
+          text = "Analyzed Candidemia Data",
+          tabName = "tab_analyzed_data",
+          icon = icon("circle")
         )
       ),
       bs4SidebarMenuItem(
@@ -37,12 +42,17 @@
         icon = icon("bars"),
         startExpanded = FALSE,
         bs4SidebarMenuSubItem(
-          text = "Item 5",
+          text = "Prospective",
           tabName = "tab5",
           icon = icon("circle")
         ),
         bs4SidebarMenuSubItem(
-          text = "Item 6",
+          text = "PPS 2",
+          tabName = "tab5",
+          icon = icon("circle")
+        ),
+        bs4SidebarMenuSubItem(
+          text = "IPC",
           tabName = "tab6",
           icon = icon("circle")
         )
@@ -52,7 +62,7 @@
         icon = icon("bars"),
         startExpanded = FALSE,
         bs4SidebarMenuSubItem(
-          text = "Item 5",
+          text = "PPS 1",
           tabName = "tab5",
           icon = icon("circle")
         ),
@@ -63,9 +73,9 @@
         )
       ),
       bs4SidebarMenuItem(
-        text = "The team",
+        text = "",
         tabName = "",
-        icon = icon("van-shuttle")
+        icon = icon("")
       )
     )
   )
