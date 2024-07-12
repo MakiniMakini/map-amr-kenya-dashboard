@@ -7,6 +7,7 @@ source("tabs/today.R")
 source("tabs/monthly_active_surveillance.R")
 source("tabs/sensitivity_tab.R")
 source("tabs/analyzed_data.R")
+source("tabs/cvc_tip.R")
 
 # Define the body UI for bs4Dash
 body <- bs4DashBody(
@@ -19,6 +20,7 @@ body <- bs4DashBody(
     tab_ipc_year1,
     tab_today,
     tab_sensitivity,
-    tab_analyzed_data
+    tab_analyzed_data,
+    tab_cvc_tip
   )
 )

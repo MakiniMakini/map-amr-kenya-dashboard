@@ -31,6 +31,7 @@ excel_file <- "data/candidemia-data.xlsx"
 sheet_names <- excel_sheets(excel_file)
 data_list <- lapply(sheet_names, function(sheet) read_excel(excel_file, sheet = sheet))
 names(data_list) <- sheet_names
+# today data
 today_data <- data_list[["Today"]]
 summary_data <- data_list[["Totals"]]
 #map summary data
@@ -62,3 +63,9 @@ TNH_sensitivity_data <- data_list[["TNH"]] %>%
 MPSHAH_sensitivity_data <- data_list[["MPShah"]] %>% 
   rename("organism_isolated" = "Organism isolated", "patient_outcome" = "Patient outcome",
          "sensitive" = "AFST -Sensitive", "resistant" = "AFST-Resistant", "intermediate" = "AFST-Intermediate")
+# cvc tip data
+CVC_TIP_DATA <- data_list[["CVC-TIPS"]]  %>% 
+  rename("organism_isolated" = "Organism isolated", "patient_outcome" = "Patient outcome",
+         "sensitive" = "AFST-Sensitive", "resistant" = "AFST-Resistant", "intermediate" = "AFST-Intermediate") %>%
+  select(Facility, organism_isolated, sensitive, intermediate, resistant, patient_outcome)
+

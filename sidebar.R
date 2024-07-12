@@ -32,6 +32,11 @@
           icon = icon("circle")
         ),
         bs4SidebarMenuSubItem(
+          text = "CVC-TIP Samples",
+          tabName = "tab_cvc_tip",
+          icon = icon("circle")
+        ),
+        bs4SidebarMenuSubItem(
           text = "Analyzed Candidemia Data",
           tabName = "tab_analyzed_data",
           icon = icon("circle")
