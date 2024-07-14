@@ -13,9 +13,9 @@
         selected = TRUE
       ),
       bs4SidebarMenuItem(
-        text = "",
-        tabName = "today"
-        #icon = icon("calendar-day")
+        text = "Today",
+        tabName = "today",
+        icon = icon("calendar-day")
       ),
       bs4SidebarMenuItem(
         text = "Year 3",

@@ -2,250 +2,51 @@ tab_today <- tabItem(
   tabName = "today",
   fluidRow(
     column(
-      #KNH
       width = 6,
       box(
-        title = "KNH",
+        title = "New cases from the sites",
         solidHeader = TRUE,
-        status = "teal",
-        collapsible = TRUE,
-        width = 12,  # Full width of the column
-        tabsetPanel(
-          id = "knh-tabset",
-          tabPanel(
-            title = "Main ICU",
-            fluidRow(
-              bs4ValueBox(
-                value = textOutput("new_cases_KNH"),
-                subtitle = "KNH",
-                color = "gray",
-                icon = icon("users")
-              )
-            )
-          ),
-          tabPanel(
-            title = "",
-            fluidRow(
-              bs4ValueBox(
-                value = "123",
-                subtitle = "Makini",
-                color = "gray",
-                icon = icon("users")
-              )
-            )
-          ),
-          tabPanel(
-            title = "Tab 3",
-            fluidRow(
-              bs4ValueBox(
-                value = "123",
-                subtitle = "Makini",
-                color = "warning",
-                icon = icon("users")
-              )
-            )
-          ),
-          tabPanel(
-            title = "Tab 4",
-            fluidRow(
-              bs4ValueBox(
-                value = "123",
-                subtitle = "Makini",
-                color = "danger",
-                icon = icon("users")
-              )
-            )
-          )
-        )
-      )
-      
-    ),
-    #TNH
-    column(
-      width = 6,
-      box(
-        title = "TNH",
-        solidHeader = TRUE,
-        status = "primary",
+        status = "danger",
         collapsible = TRUE,
         width = 12,  # Full width of the column
         fluidRow(
-          bs4ValueBox(
-            value = textOutput(""),
-            subtitle = "KNH",
-            color = "success",
-            icon = icon("users")
-          ),
-          bs4ValueBox(
-            value = "123",
-            subtitle = "Makini",
-            color = "primary",
-            icon = icon("users")
-          ),
-          bs4ValueBox(
-            value = "123",
-            subtitle = "Makini",
-            color = "warning",
-            icon = icon("users")
-          ),
-          bs4ValueBox(
-            value = "123",
-            subtitle = "Makini",
-            color = "danger",
-            icon = icon("users")
-          )
-        )
-      )
-    )
-  ),
-  fluidRow(
-    column(
-      # MP-SHAH
-      width = 6,
-      box(
-        title = "MP-SHAH",
-        solidHeader = TRUE,
-        status = "maroon",
-        collapsible = TRUE,
-        width = 12,  # Full width of the column
-        fluidRow(
-          bs4ValueBox(
-            value = textOutput(""),
-            subtitle = "KNH",
-            color = "success",
-            icon = icon("users")
-          ),
-          bs4ValueBox(
-            value = "123",
-            subtitle = "Makini",
-            color = "primary",
-            icon = icon("users")
-          ),
-          bs4ValueBox(
-            value = "123",
-            subtitle = "Makini",
-            color = "warning",
-            icon = icon("users")
-          ),
-          bs4ValueBox(
-            value = "123",
-            subtitle = "Makini",
-            color = "danger",
-            icon = icon("users")
-          )
+          # Use lapply to generate bs4InfoBox dynamically
+          lapply(1:nrow(today_data), function(i) {
+            bs4InfoBox(
+              value = today_data$Organism[i],  # Notification message
+              title = today_data$Site[i],          # Site name
+              color = "success",
+              icon = icon("users")
+            )
+          }) %>%
+            unlist(recursive = FALSE, use.names = FALSE)
         )
       )
     ),
+    # Notifications
     column(
       width = 6,
       box(
-        title = "Machakos",
+        title = "Important Notifications From Sites",
         solidHeader = TRUE,
-        status = "lime",
+        status = "info",
         collapsible = TRUE,
         width = 12,  # Full width of the column
         fluidRow(
-          bs4ValueBox(
-            value = textOutput(""),
-            subtitle = "KNH",
-            color = "success",
-            icon = icon("users")
-          ),
-          bs4ValueBox(
-            value = "123",
-            subtitle = "Makini",
-            color = "primary",
-            icon = icon("users")
-          ),
-          bs4ValueBox(
-            value = "123",
-            subtitle = "Makini",
-            color = "warning",
-            icon = icon("users")
-          ),
-          bs4ValueBox(
-            value = "123",
-            subtitle = "Makini",
-            color = "danger",
-            icon = icon("users")
-          )
-        )
-      )
-    )
-  ),
-  fluidRow(
-    column(
-      # MP-SHAH
-      width = 6,
-      box(
-        title = "Coast General Hospital",
-        solidHeader = TRUE,
-        status = "gray",
-        collapsible = TRUE,
-        width = 12,  # Full width of the column
-        fluidRow(
-          bs4ValueBox(
-            value = textOutput(""),
-            subtitle = "KNH",
-            color = "success",
-            icon = icon("users")
-          ),
-          bs4ValueBox(
-            value = "123",
-            subtitle = "Makini",
-            color = "primary",
-            icon = icon("users")
-          ),
-          bs4ValueBox(
-            value = "123",
-            subtitle = "Makini",
-            color = "warning",
-            icon = icon("users")
-          ),
-          bs4ValueBox(
-            value = "123",
-            subtitle = "Makini",
-            color = "danger",
-            icon = icon("users")
-          )
-        )
-      )
-    ),
-    column(
-      width = 6,
-      box(
-        title = "JOOTRH",
-        solidHeader = TRUE,
-        status = "fuchsia",
-        collapsible = TRUE,
-        width = 12,  # Full width of the column
-        fluidRow(
-          bs4ValueBox(
-            value = textOutput(""),
-            subtitle = "KNH",
-            color = "gray-dark",
-            icon = icon("users")
-          ),
-          bs4ValueBox(
-            value = "123",
-            subtitle = "Makini",
-            color = "gray-dark",
-            icon = icon("users")
-          ),
-          bs4ValueBox(
-            value = "123",
-            subtitle = "Makini",
-            color = "gray-dark",
-            icon = icon("users")
-          ),
-          bs4ValueBox(
-            value = "123",
-            subtitle = "Makini",
-            color = "gray-dark",
-            icon = icon("users")
-          )
+          # Use lapply to generate bs4InfoBox dynamically
+          lapply(1:nrow(notifications), function(i) {
+            bs4InfoBox(
+              value = notifications$Notification[i],  # Notification message
+              title = notifications$Site[i],          # Site name
+              color = "success",
+              icon = icon("hospital")
+            )
+          }) %>%
+            unlist(recursive = FALSE)
         )
       )
     )
   )
 )
+
+

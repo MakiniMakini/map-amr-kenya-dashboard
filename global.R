@@ -33,6 +33,7 @@ data_list <- lapply(sheet_names, function(sheet) read_excel(excel_file, sheet = 
 names(data_list) <- sheet_names
 # today data
 today_data <- data_list[["Today"]]
+notifications <- data_list[["Notifications"]]
 summary_data <- data_list[["Totals"]]
 #map summary data
 hospital_summary <- data_list[["Totals"]]
