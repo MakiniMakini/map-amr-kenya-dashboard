@@ -3,7 +3,7 @@ tab_monthly_active_surveillance <- tabItem(tabName = "monthly_active_surveillanc
                    box(
                      title = "KNH Active Surveillance",
                      solidHeader = TRUE,
-                     status = "gray",
+                     status = "gray-dark",
                      collapsible = TRUE,
                      width = 12,
                      fluidRow(
@@ -38,7 +38,7 @@ tab_monthly_active_surveillance <- tabItem(tabName = "monthly_active_surveillanc
                    box(
                      title = "TNH Active Surveillance",
                      solidHeader = TRUE,
-                     status = "teal",
+                     status = "gray-dark",
                      collapsible = TRUE,
                      width = 12,
                      fluidRow(
@@ -73,7 +73,7 @@ tab_monthly_active_surveillance <- tabItem(tabName = "monthly_active_surveillanc
                    box(
                      title = "MP-SHAH Active Surveillance",
                      solidHeader = TRUE,
-                     status = "lightblue",
+                     status = "gray-dark",
                      collapsible = TRUE,
                      width = 12,
                      fluidRow(
@@ -108,7 +108,7 @@ tab_monthly_active_surveillance <- tabItem(tabName = "monthly_active_surveillanc
                    box(
                      title = "Other sites",
                      solidHeader = TRUE,
-                     status = "teal",
+                     status = "gray-dark",
                      collapsible = TRUE,
                      width = 12,  # Full width of the column
                      tabsetPanel(

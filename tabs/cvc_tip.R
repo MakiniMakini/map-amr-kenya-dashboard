@@ -1,8 +1,8 @@
 tab_cvc_tip <- tabItem(tabName = "tab_cvc_tip",
                            box(
-                             title = "KNH AFST Results & Outcomes",
+                             title = "CVC-TIP AFST Results",
                              solidHeader = TRUE,
-                             status = "lightblue",
+                             status = "gray-dark",
                              collapsible = TRUE,
                              width = 12,
                              fluidRow(

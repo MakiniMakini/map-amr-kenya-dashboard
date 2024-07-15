@@ -37,7 +37,7 @@
           icon = icon("circle")
         ),
         bs4SidebarMenuSubItem(
-          text = "Analyzed Candidemia Data",
+          text = "Analyzed Data - Tables",
           tabName = "tab_analyzed_data",
           icon = icon("circle")
         )

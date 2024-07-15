@@ -8,7 +8,10 @@ sensitivity_KNH_data_long <- KNH_sensitivity_data %>%
   group_by(organism_isolated, Drugs, Resistance) %>%
   summarise(Count = n(), .groups = 'drop')
 
-# Render plot based on selected organism
+
+
+# Assuming sensitivity_KNH_data_long is already defined somewhere
+
 output$knh_sensitivity_plot <- renderPlotly({
   organism <- switch(input$organism_tabs,
                      parapsilosis = "Candida parapsilosis",
@@ -16,14 +19,19 @@ output$knh_sensitivity_plot <- renderPlotly({
                      tropicalis = "Candida tropicalis",
                      auris = "Candida auris")
   
-  ggplot(sensitivity_KNH_data_long %>% filter(organism_isolated == organism), aes(y = Drugs, x = Count, fill = Resistance)) +
+  p <- ggplot(sensitivity_KNH_data_long %>% filter(organism_isolated == organism), 
+              aes(y = Drugs, x = Count, fill = Resistance)) +
     geom_bar(stat = "identity") +
     labs(title = paste(organism, "AFST Results"), x = "Number of organisms", y = "") +
     theme_minimal() +
     theme(axis.text.y = element_text(angle = 0, hjust = 1)) +
     scale_x_continuous(breaks = scales::pretty_breaks(n = 0.5))  +
     scale_fill_manual(values = c("sensitive" = "#2c3e50", "intermediate" = "#FDDBC7", "resistant" = "#B2182B"))
+  
+  ggplotly(p, tooltip = "fill") %>%
+    layout(hoverlabel = list(bgcolor = "black", font = list(size = 14)))
 })
+
 
 # outcome data visuals
 # Convert to factors to maintain order

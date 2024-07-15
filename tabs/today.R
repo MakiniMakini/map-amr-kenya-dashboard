@@ -18,8 +18,9 @@ tab_today <- tabItem(
               color = "success",
               icon = icon("users")
             )
-          }) %>%
-            unlist(recursive = FALSE, use.names = FALSE)
+          }) 
+          # %>%
+          #   unlist(recursive = FALSE, use.names = FALSE)
         )
       )
     ),
@@ -41,8 +42,9 @@ tab_today <- tabItem(
               color = "success",
               icon = icon("hospital")
             )
-          }) %>%
-            unlist(recursive = FALSE)
+          })
+          # %>%
+          #   unlist(recursive = FALSE)
         )
       )
     )

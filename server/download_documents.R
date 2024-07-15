@@ -1,11 +1,68 @@
-output$downloadWord <- downloadHandler(
+output$downloadTable_1 <- downloadHandler(
   filename = function() {
-    paste("analyzed_data", Sys.Date(), ".docx", sep = "")
+    paste("Patient characteristics - ", Sys.Date(), ".docx", sep = "")
   },
   content = function(file) {
-    file.copy("www/analyzed_data.docx", file)
+    file.copy("www/analyzed_data_folder/MAP AMR Table 1 - Patient Characteristics February.docx", file)
   }
 )
+output$downloadTable_2 <- downloadHandler(
+  filename = function() {
+    paste("Reason for Admission - ", Sys.Date(), ".docx", sep = "")
+  },
+  content = function(file) {
+    file.copy("www/analyzed_data_folder/MAP AMR Table 2 - Reasons for current admission February.docx", file)
+  }
+)
+output$downloadTable_3a <- downloadHandler(
+  filename = function() {
+    paste("Admission Characteristics", Sys.Date(), ".docx", sep = "")
+  },
+  content = function(file) {
+    file.copy("www/analyzed_data_folder/MAP AMR Table 3a - Admission Characteristics February.docx", file)
+  }
+)
+output$downloadTable_3b <- downloadHandler(
+  filename = function() {
+    paste("Invasives - ", Sys.Date(), ".docx", sep = "")
+  },
+  content = function(file) {
+    file.copy("www/analyzed_data_folder/MAP AMR Table 3b - Invasives, Admission Characteristics February.docx", file)
+  }
+)
+output$downloadTable_4 <- downloadHandler(
+  filename = function() {
+    paste("Underlying conditions - ", Sys.Date(), ".docx", sep = "")
+  },
+  content = function(file) {
+    file.copy("www/analyzed_data_folder/MAP AMR Table 4 - Underlying Conditions February.docx", file)
+  }
+)
+output$downloadTable_5 <- downloadHandler(
+  filename = function() {
+    paste("MDRO characteristics - ", Sys.Date(), ".docx", sep = "")
+  },
+  content = function(file) {
+    file.copy("www/analyzed_data_folder/MAP AMR Table 5 - MDRO and results Characteristics February.docx", file)
+  }
+)
+output$downloadTable_6a <- downloadHandler(
+  filename = function() {
+    paste("Antibiotic use - ", Sys.Date(), ".docx", sep = "")
+  },
+  content = function(file) {
+    file.copy("www/analyzed_data_folder/MAP AMR Table 6a - Antibiotics Characteristics February.docx", file)
+  }
+)
+output$downloadTable_6b <- downloadHandler(
+  filename = function() {
+    paste("Antifungal use - ", Sys.Date(), ".docx", sep = "")
+  },
+  content = function(file) {
+    file.copy("www/analyzed_data_folder/MAP AMR Table 6b - Antifungals Characteristics February.docx", file)
+  }
+)
+
 
 
 # output$downloadWord <- downloadHandler(
