@@ -30,12 +30,16 @@ create_chart <- function(type) {
     # Convert data to long format
     data_long <- reshape2::melt(new_summary_data, id.vars = "Hospital")
     
+    # Define colors for the bars
+    colors <- c("#2c3e50", "#B2182B")
+    
     # Plot using plot_ly
     plot_ly(
       data_long,
       x = ~Hospital,
       y = ~value,
       color = ~variable,
+      colors = colors,
       type = 'bar',
       text = ~paste(Hospital, "<br>", variable, ": ", value),
       hoverinfo = "text",

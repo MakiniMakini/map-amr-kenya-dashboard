@@ -6,17 +6,20 @@
     inputId = "sidebarState",
     bs4SidebarMenu(
       id = "sidebar",
+      # home/map tab
       bs4SidebarMenuItem(
         text = "Home",
         tabName = "map",
         icon = icon("house"),
         selected = TRUE
       ),
+      # today tab
       bs4SidebarMenuItem(
         text = "Today",
         tabName = "today",
         icon = icon("calendar-day")
       ),
+      # year 3 tabs
       bs4SidebarMenuItem(
         text = "Year 3",
         icon = icon("bars"),
@@ -42,13 +45,14 @@
           icon = icon("circle")
         )
       ),
+      # year 2 tabs
       bs4SidebarMenuItem(
         text = "Year 2",
         icon = icon("bars"),
         startExpanded = FALSE,
         bs4SidebarMenuSubItem(
           text = "Prospective",
-          tabName = "tab5",
+          tabName = "prospective_surveillance",
           icon = icon("circle")
         ),
         bs4SidebarMenuSubItem(
@@ -62,6 +66,7 @@
           icon = icon("circle")
         )
       ),
+      # year 1 tabs
       bs4SidebarMenuItem(
         text = "Year 1",
         icon = icon("bars"),

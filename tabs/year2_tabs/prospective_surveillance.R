@@ -71,5 +71,5 @@ tab_map <- tabItem(tabName = "map",
                        )
                      )
                    )
-     
+                   
 )

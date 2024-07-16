@@ -6,6 +6,7 @@ hospital_summary$Longitude <- as.numeric(hospital_summary$Longitude)
 hospital_summary$Latitude <- as.numeric(hospital_summary$Latitude)
 
 # Render Leaflet map
+# Render Leaflet map
 output$map <- renderLeaflet({
   # Define color palette for number of Candida isolated
   pal <- colorBin("YlOrBr", domain = hospital_summary$Candida_isolated, bins = 3)
@@ -22,7 +23,6 @@ output$map <- renderLeaflet({
   leaflet() %>%
     addTiles() %>%
     addPolygons(data = map,
-                #fillColor = ~pal(hospital_summary$Candida_isolated),
                 color = "orange",
                 dashArray = "1",
                 fillOpacity = 0.3,
@@ -36,14 +36,11 @@ output$map <- renderLeaflet({
     addMarkers(data = hospital_summary,
                lng = ~Longitude,
                lat = ~Latitude,
+               popup = labels,
                label = labels,
                labelOptions = labelOptions(
                  style = list("font-weight" = "bold", padding = "8px"),
                  direction = "auto"
-               ),
-               icon = icons(
-                 iconUrl = "http://leafletjs.com/examples/custom-icons/leaf-green.png",  # Example icon URL
-                 iconWidth = 38, iconHeight = 95,
-                 iconAnchorX = 22, iconAnchorY = 94
                ))
 })
+

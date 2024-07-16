@@ -8,18 +8,7 @@ ui <- bs4DashPage(
     title = "MAP-AMR KENYA",
     titleWidth = NULL,
     disable = FALSE,
-    .list = tagList(
-      tags$li(
-        class = "nav-item",
-        tags$a(
-          id = "today-tab-link",
-          class = "nav-link",
-          href = "#"
-          # shiny::icon("calendar-day"),
-          # span("TODAY")
-        )
-      )
-    ),
+    .list = NULL,
     leftUi = NULL,
     rightUi = NULL,
     skin = "dark",
