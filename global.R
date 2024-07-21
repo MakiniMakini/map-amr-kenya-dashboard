@@ -22,15 +22,19 @@ library(reshape2)
 #setwd("~/WORK/CEMA/MAP-AMR/Dashboard/appdir")
 
 # Load data
-data <- read.csv("data/ANC_county.csv")
 map <- st_read("data/fe_2007_39_county/County.shp")
 #pdf_path <- "data/baseline_ipc_IPCAF_2022.pdf"
 
-# Load Excel data and read sheets into a list
+# Load Excel Main data and read sheets into a list
 excel_file <- "data/candidemia-data.xlsx"
 sheet_names <- excel_sheets(excel_file)
 data_list <- lapply(sheet_names, function(sheet) read_excel(excel_file, sheet = sheet))
 names(data_list) <- sheet_names
+# Load Excel Year 2 data and read sheets into a list
+excel_file2 <- "data/Year_two_data_main.xlsx"
+sheet_names2 <- excel_sheets(excel_file2)
+data_list_year2 <- lapply(sheet_names2, function(sheet) read_excel(excel_file2, sheet = sheet))
+names(data_list_year2) <- sheet_names2
 # today data
 today_data <- data_list[["Today"]]
 notifications <- data_list[["Notifications"]]
@@ -70,3 +74,15 @@ CVC_TIP_DATA <- data_list[["CVC-TIPS"]]  %>%
          "sensitive" = "AFST-Sensitive", "resistant" = "AFST-Resistant", "intermediate" = "AFST-Intermediate") %>%
   select(Facility, organism_isolated, sensitive, intermediate, resistant, patient_outcome)
 
+
+# yEAR 2 DATA
+# map data
+prospective_summary_data <- data_list_year2[["Totals"]]
+# positive summary data
+summary_data_prospective <- data_list_year2[["Summary"]]
+#candida summary
+summary_data_pps_2 <- data_list_year2[["PPS-2"]]
+# invasives
+invasives_data_pps_2 <- data_list_year2[["pps_2_invasives"]]
+
+ 

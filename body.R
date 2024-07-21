@@ -9,6 +9,9 @@ source("tabs/sensitivity_tab.R")
 source("tabs/analyzed_data.R")
 source("tabs/cvc_tip.R")
 source("tabs/year2_tabs/prospective_surveillance.R")
+source("tabs/year2_tabs/charts/table_1.R")
+source("tabs/year2_tabs/charts/pps_2.R")
+source("tabs/year1_tabs/pps_1.R")
 
 # Define the body UI for bs4Dash
 body <- bs4DashBody(
@@ -23,6 +26,9 @@ body <- bs4DashBody(
     tab_sensitivity,
     tab_analyzed_data,
     tab_cvc_tip,
-    tab_prospective_surveillance
+    tab_prospective_surveillance,
+    tab_table_1,
+    tab_pps_2,
+    tab_pps_1
   )
 )

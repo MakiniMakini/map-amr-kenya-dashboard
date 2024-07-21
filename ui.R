@@ -4,6 +4,7 @@
 source("global.R")
 # Define UI for application
 ui <- bs4DashPage(
+  useShinyjs(),
   header = bs4DashNavbar(
     title = "MAP-AMR KENYA",
     titleWidth = NULL,

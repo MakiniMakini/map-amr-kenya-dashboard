@@ -13,4 +13,8 @@ server <- function(input, output, session) {
   source("server/sensitivity_server/sensitivity_server.R", local = TRUE)
   source("server/sensitivity_server/cvc_tip.R", local = TRUE)
   source("server/download_documents.R", local = TRUE)
+  source("server/year2_server/nairobi_map.R", local = TRUE)
+  source("server/year2_server/charts/summary_chart.R", local = TRUE)
+  source("server/year2_server/charts/pps_2.R", local = TRUE)
+  source("server/year1_server/download_analyzed_data_y1.R", local = TRUE)
 }

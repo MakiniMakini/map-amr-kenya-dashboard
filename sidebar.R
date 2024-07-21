@@ -51,13 +51,12 @@
         icon = icon("bars"),
         startExpanded = FALSE,
         bs4SidebarMenuSubItem(
-          text = "Prospective",
-          tabName = "prospective_surveillance",
-          icon = icon("circle")
+          text = actionButton("btn_prospective_surveillance", "Prospective surveillance", icon = icon("circle")),
+          tabName = "tab_prospective_surveillance"
         ),
         bs4SidebarMenuSubItem(
           text = "PPS 2",
-          tabName = "tab5",
+          tabName = "tab_pps_2",
           icon = icon("circle")
         ),
         bs4SidebarMenuSubItem(
@@ -73,7 +72,7 @@
         startExpanded = FALSE,
         bs4SidebarMenuSubItem(
           text = "PPS 1",
-          tabName = "tab5",
+          tabName = "tab_pps_1",
           icon = icon("circle")
         ),
         bs4SidebarMenuSubItem(

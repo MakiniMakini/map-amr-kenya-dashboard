@@ -1,33 +1,10 @@
 # landing page tab with map and quick figures
-tab_map <- tabItem(tabName = "map",
-                   # fluidRow(
-                   #   bs4ValueBox(
-                   #     value = "6", #can use textoutput() as function
-                   #     subtitle = "Total sites",
-                   #     color = "gray",
-                   #     icon("home")
-                   #   ),
-                   #   bs4ValueBox(
-                   #     value = "",
-                   #     subtitle = "Total patients",
-                   #     color = "gray-dark",
-                   #     icon = icon("users")
-                   #   ),
-                   #   bs4ValueBox(
-                   #     value = "",
-                   #     subtitle = "Candida isolated",
-                   #     color = "warning",
-                   #     icon = icon("users")
-                   #   ),
-                   #   bs4ValueBox(
-                   #     value = "",
-                   #     subtitle = "Active surveillance",
-                   #     color = "gray",
-                   #     icon = icon("users")
-                   #   )
-                   # ),
+tab_prospective_surveillance <- tabItem(tabName = "tab_prospective_surveillance",
                    box(
-                     title = "MAP-AMR Kenya",
+                     title = tagList(
+                       "Prospective surveillance summary",
+                       selectInput("prospective_surveillance_select", "Select Prospective Category", choices = c("Categories ..", "Table_1", "TNH", "NSIRH", "JOOTRH"), selected = "Categories ..")
+                     ),
                      solidHeader = TRUE,
                      status = "gray-dark",
                      collapsible = TRUE,
@@ -41,9 +18,9 @@ tab_map <- tabItem(tabName = "map",
                              bs4Card(
                                status = "gray",
                                color = "gray",
-                               title = "MAP-AMR Kenya Sites",
+                               title = "MAP-AMR Kenya Prospective Surveillance Sites",
                                maximizable = TRUE,
-                               leafletOutput("map", height = "800px"),
+                               leafletOutput("nairobi_map", height = "800px"),
                                width = 12
                              )
                            ),
@@ -51,19 +28,36 @@ tab_map <- tabItem(tabName = "map",
                              width = 4,
                              bs4Card(
                                solidHeader = TRUE,
-                               status = "white",
-                               title = "Active surveillance screened patients per hospital - summary",
+                               status = "teal",
+                               title = "Candida auris colonization rates",
                                maximizable = TRUE,
-                               plotlyOutput("piechart_summary_hospital"),
                                width = 12,
-                               style = "max-height: 300px; overflow-y: auto;" 
+                               style = "max-height: 300px; overflow-y: auto;",
+                               descriptionBlock(
+                                 tags$div(
+                                   style = "display: flex; flex-direction: row; justify-content: space-around; align-items: center;",
+                                   tags$div(
+                                     style = "text-align: center;",
+                                     tags$p("12.19%", style = "font-size: 24px; font-weight: bold;"),
+                                    # tags$span(class = "iconify", "data-icon" = "dashicons:arrow-up-alt", style = "color: #28a745; font-size: 16px; vertical-align: middle; margin-left: 5px;"),
+                                     tags$p("Colonization rate", style = "font-size: 18px;"),
+                                     tags$p("KNH", style = "font-size: 16px; color: #888888;")
+                                   ),
+                                   tags$div(
+                                     style = "text-align: center;",
+                                     tags$p("9.2%", style = "font-size: 24px; font-weight: bold;"),
+                                     tags$p("Colonization rate", style = "font-size: 18px;"),
+                                     tags$p("TNH", style = "font-size: 16px; color: #888888;")
+                                   )
+                                 )
+                               )
                              ),
                              bs4Card(
                                solidHeader = TRUE,
                                status = "white",
-                               title = "Active surveillance candida results hospital - summary",
+                               title = "Prospective surveillance candida auris - summary",
                                maximizable = TRUE,
-                               plotlyOutput("bargraph_summary_candida"),
+                               plotlyOutput("bargraph_summary_pros"),
                                width = 12
                              )
                            )
