@@ -71,7 +71,5 @@ output$pps_2_invasives <- renderPlotly({
 })
 
 
-# Function to create charts
-
 
 

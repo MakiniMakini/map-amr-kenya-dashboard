@@ -22,7 +22,7 @@ tab_pps_1 <- tabItem(tabName = "tab_pps_1",
                                      status = "fuchsia",
                                      title = "",
                                      maximizable = TRUE,
-                                     plotlyOutput(""),
+                                     plotlyOutput("summary_year_1_bar"),
                                      width = 12
                                    )
                                  )
@@ -31,7 +31,7 @@ tab_pps_1 <- tabItem(tabName = "tab_pps_1",
                            )
                          ),
                          tabPanel(
-                           title = "Invasives",
+                           title = "",
                            fluidRow(
                              column(
                                width = 12,
@@ -42,7 +42,7 @@ tab_pps_1 <- tabItem(tabName = "tab_pps_1",
                                      status = "fuchsia",
                                      title = "",
                                      maximizable = TRUE,
-                                     plotlyOutput("pps_2_invasives"),
+                                     plotlyOutput(""),
                                      width = 12
                                    )
                                  )

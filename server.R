@@ -17,4 +17,5 @@ server <- function(input, output, session) {
   source("server/year2_server/charts/summary_chart.R", local = TRUE)
   source("server/year2_server/charts/pps_2.R", local = TRUE)
   source("server/year1_server/download_analyzed_data_y1.R", local = TRUE)
+  source("server/year1_server/summary_year_1.R", local = TRUE)
 }

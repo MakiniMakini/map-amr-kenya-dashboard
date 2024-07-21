@@ -5,7 +5,7 @@ account: map-amr
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 12288202
-bundleId: 8864859
+bundleId:
 url: https://map-amr.shinyapps.io/appdir/
 version: 1
 asMultiple: FALSE

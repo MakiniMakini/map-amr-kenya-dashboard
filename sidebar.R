@@ -60,9 +60,9 @@
           icon = icon("circle")
         ),
         bs4SidebarMenuSubItem(
-          text = "IPC",
+          text = "",
           tabName = "tab6",
-          icon = icon("circle")
+          icon = icon("")
         )
       ),
       # year 1 tabs
@@ -76,9 +76,9 @@
           icon = icon("circle")
         ),
         bs4SidebarMenuSubItem(
-          text = "IPC",
+          text = "",
           tabName = "ipc-year1",
-          icon = icon("circle")
+          icon = icon("")
         )
       ),
       bs4SidebarMenuItem(

@@ -30,6 +30,11 @@ excel_file <- "data/candidemia-data.xlsx"
 sheet_names <- excel_sheets(excel_file)
 data_list <- lapply(sheet_names, function(sheet) read_excel(excel_file, sheet = sheet))
 names(data_list) <- sheet_names
+# Load Excel Year 1 data and read sheets into a list
+excel_file1 <- "data/Year_one_data_main.xlsx"
+sheet_names1 <- excel_sheets(excel_file1)
+data_list_year1 <- lapply(sheet_names1, function(sheet) read_excel(excel_file1, sheet = sheet))
+names(data_list_year1) <- sheet_names1
 # Load Excel Year 2 data and read sheets into a list
 excel_file2 <- "data/Year_two_data_main.xlsx"
 sheet_names2 <- excel_sheets(excel_file2)
@@ -75,7 +80,7 @@ CVC_TIP_DATA <- data_list[["CVC-TIPS"]]  %>%
   select(Facility, organism_isolated, sensitive, intermediate, resistant, patient_outcome)
 
 
-# yEAR 2 DATA
+# YEAR 2 DATA
 # map data
 prospective_summary_data <- data_list_year2[["Totals"]]
 # positive summary data
@@ -86,3 +91,8 @@ summary_data_pps_2 <- data_list_year2[["PPS-2"]]
 invasives_data_pps_2 <- data_list_year2[["pps_2_invasives"]]
 
  
+# YEAR 1 DATA
+# summary pps 1 data 
+summary_data_pps_1 <- data_list_year1[["Summary"]]
+
+
